@@ -4,7 +4,7 @@ React 19 Beta 공개 기념 새로운 기능 및 개선점 소개
 
 ## Actions
 
-**Pending, Error, Optimistic updates를 자동으로 처리하는 기능**
+비동기 트랜지션을 사용하는 함수를 "Actions"라고 부른다. Actions를 사용하면 **Pending, Error, Optimistic updates를 자동으로 처리할 수 있다.**
 
 기존의 리액트에서는 비동기처리에서의 상태관리들을 직접 처리해야했음
 
@@ -17,6 +17,7 @@ function UpdateName({}) {
 
   const handleSubmit = () => {
     startTransition(async () => {
+      //비동기로 사용이 가능해짐!
       const error = await updateName(name);
       if (error) {
         setError(error);
@@ -126,7 +127,7 @@ transition이나 form action 내에서만 사용 가능
 
 ### use
 
-Promise또는 Context를 읽는 훅
+Promise또는 Context를 읽는 훅,
 `use`로 프로미스를 읽는 경우 프로미스가 리졸브 될 때까지 리액트는 일시 중단됨
 
 ```TSX
@@ -134,6 +135,10 @@ import {use} from 'react';
 
 function Comments({commentsPromise}) {
   // `use`는 프로미스가 해결될 때까지 일시 중단됩니다.
+  if(!commentsPromise){
+    return null;
+  }
+
   const comments = use(commentsPromise);
   return comments.map(comment => <p key={comment.id}>{comment}</p>);
 }
