@@ -163,7 +163,8 @@ Q Roger는 테니스공 5개를 가지고 있습니다. 그는 테니스공 3개
 <img src='./zeroshot-cot.png' style='padding:15px'/>
 
 - trigger example
-  <img src='./zeroshot-cot-trigger.png' style='padding:15px'/>
+
+<img src='./zeroshot-cot-trigger.png' style='padding:15px'/>
 
 ### Self-Consistency
 
